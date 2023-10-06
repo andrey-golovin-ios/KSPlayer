@@ -63,6 +63,7 @@ class MEFilter {
                 graph.pointee.filters[Int(i)]?.pointee.hw_device_ctx = av_buffer_ref(hwDeviceCtx)
             }
         }
+        av_buffer_unref(&hwDeviceCtx)
         ret = avfilter_graph_config(graph, nil)
         guard ret >= 0 else { return false }
         return true
