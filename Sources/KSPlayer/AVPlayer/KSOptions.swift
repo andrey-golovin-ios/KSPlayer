@@ -87,6 +87,7 @@ open class KSOptions {
     public var hardwareDecode = KSOptions.hardwareDecode
     public var asynchronousDecompression = KSOptions.asynchronousDecompression
     public var videoDisable = false
+    public var allowPiP = false
     public var canStartPictureInPictureAutomaticallyFromInline = true
     private var videoClockDelayCount = 0
 
@@ -415,12 +416,12 @@ public extension KSOptions {
         #if os(macOS)
 //        try? AVAudioSession.sharedInstance().setRouteSharingPolicy(.longFormAudio)
         #else
-        let category = AVAudioSession.sharedInstance().category
-        if category != .playback, category != .playAndRecord {
-            try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, policy: .longFormAudio)
-        }
-        try? AVAudioSession.sharedInstance().setMode(.moviePlayback)
-        try? AVAudioSession.sharedInstance().setActive(true)
+//        let category = AVAudioSession.sharedInstance().category
+//        if category != .playback, category != .playAndRecord {
+//            try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, policy: .longFormAudio)
+//        }
+//        try? AVAudioSession.sharedInstance().setMode(.moviePlayback)
+//        try? AVAudioSession.sharedInstance().setActive(true)
         #endif
     }
 

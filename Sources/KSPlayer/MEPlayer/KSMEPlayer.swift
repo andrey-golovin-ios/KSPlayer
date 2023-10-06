@@ -35,6 +35,9 @@ public class KSMEPlayer: NSObject {
     }
 
     private lazy var _pipController: Any? = {
+        if !options.allowPiP {
+          return nil
+        }
         if #available(iOS 15.0, tvOS 15.0, macOS 12.0, *), let videoOutput {
             let contentSource = AVPictureInPictureController.ContentSource(sampleBufferDisplayLayer: videoOutput.displayView.displayLayer, playbackDelegate: self)
             let pip = KSPictureInPictureController(contentSource: contentSource)

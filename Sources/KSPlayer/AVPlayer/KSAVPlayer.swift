@@ -96,6 +96,9 @@ public class KSAVPlayer {
     }
 
     private lazy var _pipController: Any? = {
+        if !options.allowPiP {
+          return nil
+        }
         if #available(tvOS 14.0, *) {
             let pip = KSPictureInPictureController(playerLayer: playerView.playerLayer)
             return pip
